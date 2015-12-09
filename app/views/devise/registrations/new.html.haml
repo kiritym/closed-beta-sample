@@ -1,17 +1,27 @@
-- if !flash[:notice].blank?
+- if !flash[:notice_msg].blank?
   .alert.alert-info
     %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#", :title => "close"} &times;
-    = flash[:notice]
+    = flash[:notice_msg]
   Please
   = link_to "Click Here", invitation_new_path
   to get an invitation for Closed Beta Sample App
 - else
+
   %h2 Sign up
+  - if !@user.errors.empty?
+    .alert.alert-danger
+      %a.close{"aria-label" => "close", "data-dismiss" => "alert", :href => "#", :title => "close"} &times;
+      .error_messages
+        %h4
+          = pluralize(@user.errors.count, "error")
+          prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
   = form_for(@user,  url: registration_path(@user)) do |f|
-    = devise_error_messages!
     .form-group
       = f.label :email
-      = f.email_field :email, class: 'form-control'
+      = f.email_field :email, value: @user.email, class: 'form-control', readonly: true
     .form-group
       = f.label :password
       - if @minimum_password_length

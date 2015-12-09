@@ -12,11 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       #validate the user and open the sign-up page
       @invitation = Invitation.find_by_token(params[:token])
       if @invitation.nil?
-        flash.now[:notice] = "You are not yet invited for the closed beta app!"
+        flash.now[:notice_msg] = "You are not yet invited for the closed beta !"
         #redirect_to invitation_new_path
 
       else
-
+        @user.email = @invitation.email
       end
     end
   end
