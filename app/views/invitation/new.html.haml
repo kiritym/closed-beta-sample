@@ -1,0 +1,11 @@
+#welcome_form
+  %h2 Welcome to Closed Beta Sample App
+  #welcome_message
+    %p We are currently in private beta. Please submit your email address below, and we will notify you to register in our application.
+  #error_alert
+  #form_input
+    = form_for( @invitation, url: invitation_create_path,  remote: true)  do |f|
+      .form-group
+        = f.text_field :email, placeholder: 'Please provide your Email', class: 'form-control'
+      .form-group
+        = f.submit 'Register', class: 'btn btn-success'

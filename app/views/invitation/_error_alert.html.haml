@@ -1,0 +1,9 @@
+- if !@invitation.errors.empty?
+  .alert.alert-danger
+    .error_messages
+      %h4
+        = pluralize(@invitation.errors.count, "error")
+        prohibited this user from being saved:
+    %ul
+      - @invitation.errors.full_messages.each do |msg|
+        %li= msg

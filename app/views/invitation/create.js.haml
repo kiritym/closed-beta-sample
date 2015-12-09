@@ -1,0 +1,5 @@
+- if !@invitation.errors.empty?
+  $("#error_alert").html("#{escape_javascript(render :partial => 'error_alert')}")
+- else
+  $("#welcome_form").empty()
+  $("#welcome_form").append("<h3>Thanks for submitting your email address. We will notify you to register in our application.</h3>")
