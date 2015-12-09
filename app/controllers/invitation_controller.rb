@@ -1,6 +1,7 @@
 class InvitationController < ApplicationController
   layout "application"
   def new
+    puts ENV['RAILS_ENV']
     @invitation = Invitation.new
   end
 
