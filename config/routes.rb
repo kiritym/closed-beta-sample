@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  devise_for :users
   get 'invitation/new'
   post 'invitation/create'
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +7,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root 'invitation#new'
 
-
+   devise_for :users, controllers: { sessions: "users/sessions",  :registrations => "users/registrations"}
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
