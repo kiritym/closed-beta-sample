@@ -9,7 +9,9 @@ class InvitationController < ApplicationController
     email = params[:invitation][:email]
     if Invitation.find_by(email: email).nil?
       @invitation.email = email
-      @invitation.save
+      if @invitation.save
+        UserMailer.invitation_email(@invitation).deliver_now
+      end
     else
      @invitation.errors[:email] = "is already used for private beta registration"
     end

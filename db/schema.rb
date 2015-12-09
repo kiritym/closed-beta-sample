@@ -14,7 +14,8 @@
 ActiveRecord::Schema.define(version: 20151209055123) do
 
   create_table "invitations", force: :cascade do |t|
-    t.string   "email",      limit: 255
+    t.string   "email",      limit: 255, null: false
+    t.string   "token",      limit: 255, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

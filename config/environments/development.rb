@@ -16,7 +16,16 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
+  config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+   address:              'zmail.rssoftware.co.in',
+   port:                 587,
+   domain:               'rssoftware.co.in',
+   user_name:            'apayi@rssoftware.co.in',
+   password:             'Admin123',
+   authentication:       'login',
+   openssl_verify_mode: 'none',
+   enable_starttls_auto: true}
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
